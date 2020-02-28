@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/index.css">
     <style>body{background-image: url("images/background-image.gif")}</style>
     <title>Password Generator</title>
 </head>
@@ -33,8 +33,18 @@
             <?php
                 if(isset($_GET['password']) && $_GET['password'] == 'ok'){?>
                 <input type="text" id="password-output"  value="<?echo $_SESSION['password']?>">
+                <button onclick="copyText()">Copy text</button>
                 <?}?>
         </div>
     </div>
+
+    <script>
+    function copyText() {
+    var copyText = document.getElementById("password-output");
+    copyText.select(); 
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+  }
+    </script>
 </body>
 </html>
