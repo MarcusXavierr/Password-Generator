@@ -32,7 +32,7 @@
         <div class="password">
             <?php
                 if(isset($_GET['password']) && $_GET['password'] == 'ok'){?>
-                <input type="text" id="password-output" value="<?echo $_SESSION['password']?>">
+                <input type="text" id="password-output"  value="<?echo $_SESSION['password']?>">
                 <?}?>
         </div>
     </div>
