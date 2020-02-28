@@ -2,14 +2,7 @@
     session_start();
     require_once '../vendor/autoload.php';
     use ZxcvbnPhp\Zxcvbn;
-    if(!isset($_POST['length']) ||
-    (!isset($_POST['number']) || 
-    !isset($_POST['upper']) || 
-    !isset($_POST['lower']) || 
-    !isset($_POST['sybol'])))
-    {
-        header('Location:../index.php?error');
-    }
+    
     $letters = [
     'q','w','e','r','t','y','u','i',
     'o','p','a','s','d','f','g','h','j',
@@ -64,6 +57,15 @@
 
 
     $_SESSION['password'] = $password;
-    header('Location:../index.php?password=ok');
 
+    if(
+        !isset($_POST['number']) && 
+        !isset($_POST['upper']) && 
+        !isset($_POST['lower']) && 
+        !isset($_POST['symbol']))
+        {
+            header('Location:../index.php?error');
+        }else {
+            header('Location:../index.php?password=ok');
+        }
 ?>
