@@ -47,7 +47,7 @@
 
     }
 
-
+    $password = implode("",$arrayPassword); // Convert array to string
 
     //Test of Level password
     $passwordTest = new Zxcvbn();
@@ -58,7 +58,7 @@
 
     $_SESSION['password'] = $password;
 
-    if(
+    if( ($_POST['length']<1)||
         !isset($_POST['number']) && 
         !isset($_POST['upper']) && 
         !isset($_POST['lower']) && 
