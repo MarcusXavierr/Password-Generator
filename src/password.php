@@ -2,7 +2,14 @@
     session_start();
     require_once '../vendor/autoload.php';
     use ZxcvbnPhp\Zxcvbn;
-    //var_dump($_POST);
+    if(!isset($_POST['length']) ||
+    (!isset($_POST['number']) || 
+    !isset($_POST['upper']) || 
+    !isset($_POST['lower']) || 
+    !isset($_POST['sybol'])))
+    {
+        header('Location:../index.php?error');
+    }
     $letters = [
     'q','w','e','r','t','y','u','i',
     'o','p','a','s','d','f','g','h','j',
@@ -48,20 +55,13 @@
     }
 
 
-    echo "<br>";
-    var_dump($arrayPassword);
-    echo "<br>";
-    $password = implode("",$arrayPassword);
 
-    //Test
+    //Test of Level password
     $passwordTest = new Zxcvbn();
 
     $strength = $passwordTest->passwordStrength($password);
-    echo $strength['score'];
+    $_SESSION['strength'] = $strength['score'];
 
-    echo "<pre>";
-    var_dump($_POST);
-    echo  "</pre>";
 
     $_SESSION['password'] = $password;
     header('Location:../index.php?password=ok');
