@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/index.css">
-    <style>body{background-image: url("images/background-image.gif")}</style>
+    <style>body{background-image: url("images/background.jpg")}</style>
     <title>Password Generator</title>
 </head>
 <body>
@@ -33,7 +33,11 @@
             <?php
                 if(isset($_GET['password']) && $_GET['password'] == 'ok'){?>
                 <input type="text" id="password-output"  value="<?echo $_SESSION['password']?>">
-                <button onclick="copyText()">Copy text</button>
+                <button onclick="copyText()">Copy text</button><br>
+                <p>Password security level</p>
+                <div class="container">
+                     <div class="level <?echo $_SESSION['strength-css']?>"><?echo $_SESSION['strength']?></div>
+                </div>
                 <?}?>
         </div>
     </div>
