@@ -38,8 +38,12 @@
                 <div class="container">
                      <div class="level <?echo $_SESSION['strength-css']?>"><?echo $_SESSION['strength']?></div>
                 </div>
-                <?}?>
+                <?}?>  
         </div>
+                <?php
+                if(isset($_GET['error'])){?>
+                    <p class="error-mesage">Please select select your password settings and password length   and try again</p>
+                <?}?>
     </div>
 
     <script>
