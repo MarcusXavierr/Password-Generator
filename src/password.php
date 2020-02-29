@@ -53,7 +53,30 @@
     $passwordTest = new Zxcvbn();
 
     $strength = $passwordTest->passwordStrength($password);
-    $_SESSION['strength'] = $strength['score'];
+    switch ($strength['score']) {
+        case 0:
+            $strength = 'Very Low';
+            $strength_css = 'very-low';
+            break;
+        case 1:
+            $strength = 'Low';
+            $strength_css = 'low';
+            break;
+        case 2:
+            $strength = 'Medium';
+            $strength_css = 'medium';
+            break;
+        case 3:
+            $strength = 'High';
+            $strength_css = 'high';
+            break;
+        case 4:
+            $strength = 'Very High';
+            $strength_css = 'very-high';
+            break;
+    }
+    $_SESSION['strength'] = $strength;
+    $_SESSION['strength-css'] = $strength_css;
 
 
     $_SESSION['password'] = $password;
