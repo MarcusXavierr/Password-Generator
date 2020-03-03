@@ -6,18 +6,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/index.css">
-    <style>body{background-image: url("images/background.jpg")}</style>
+    <link rel="stylesheet" href="styles/teste.css">
+    <link rel="stylesheet" href="bower_components/bulma/css/bulma.css">
     <title>Password Generator</title>
 </head>
 <body>
-    <div class="form">
-        <h1>Password Generator</h1>
+<section class="section">
+    <div class="container">
+        <h1 class="title has-text-centered">Password Generator</h1>
         <form action="src/password.php" method="post">
-        <label for="">Options of the password</label><br><hr>
-            <input type="number" name="length" id="length">
-            <label for="">Select the length of the password</label><br>
-            
+        <p class="has-text-centered is-size-5">Options of the password</p><br><hr>
+            <input class=" normal input " type="number" name="length" id="length" placeholder="Select the length of the password">
             <input type="checkbox" name="upper" id="" value="yes">
             <label for="">Include uppercase letters</label><br>
             <input type="checkbox" name="lower" id="" value="yes">
@@ -26,25 +25,28 @@
             <label for="">Include numbers</label><br>
             <input type="checkbox" name="symbol" id="" value="yes">
             <label for="">Include symbols</label><br>
-            <button type="submit">Generate password</button>
+            <button type="submit" class="button is-primary is-light is-medium is-fullwidth">Generate password</button>
         </form>
-
-        <div class="password">
+        <div >
             <?php
                 if(isset($_GET['password']) && $_GET['password'] == 'ok'){?>
-                <input type="text" id="password-output"  value="<?echo $_SESSION['password']?>">
-                <button onclick="copyText()">Copy text</button><br>
-                <p>Password security level</p>
-                <div class="container">
-                     <div class="level <?echo $_SESSION['strength-css']?>"><?echo $_SESSION['strength']?></div>
+                <p class="is-size-4 has-text-centered has-text-success ">Your password is created!</p>
+                <div class="is-inline-flex is column is-three-fifths">
+                    <input type="text" id="password-output" class="input is-medium " value="<?echo $_SESSION['password']?>">
+                    <button onclick="copyText()" class="button is-primary is-light is-medium">Copy text</button><br>
                 </div>
-                <?}?>  
+                <p class="is-family-monospace">Password security level: <?echo $_SESSION['strength']?></p>
+                <div >
+                    <progress class="level progress is-large <?echo $_SESSION['strength-css']?>" value="<?echo $_SESSION['strength-progress-bar']?>" max="100"><?echo $_SESSION['strength']?></progress>
+                </div>
+            <?}?>  
         </div>
                 <?php
                 if(isset($_GET['error'])){?>
-                    <p class="error-mesage">Please select select your password settings and password length   and try again</p>
+                    <p class="is-size-4 has-text-centered has-text-danger ">Please select select your password settings and password length and try again</p>
                 <?}?>
-    </div>
+        </div>
+    </section>
 
     <script>
     function copyText() {

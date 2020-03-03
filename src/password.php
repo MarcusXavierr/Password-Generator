@@ -56,28 +56,33 @@
     switch ($strength['score']) {
         case 0:
             $strength = 'Very Low';
-            $strength_css = 'very-low';
+            $strength_color = 'is-danger';
+            $strength_progress_bar = "20";
             break;
         case 1:
             $strength = 'Low';
-            $strength_css = 'low';
+            $strength_color = 'is-danger';
+            $strength_progress_bar = "40";
             break;
         case 2:
             $strength = 'Medium';
-            $strength_css = 'medium';
+            $strength_color = 'is-warning';
+            $strength_progress_bar = "60";
             break;
         case 3:
             $strength = 'High';
-            $strength_css = 'high';
+            $strength_color = 'is-success';
+            $strength_progress_bar = "80";
             break;
         case 4:
             $strength = 'Very High';
-            $strength_css = 'very-high';
+            $strength_color = 'is-success';
+            $strength_progress_bar = "100";
             break;
     }
     $_SESSION['strength'] = $strength;
-    $_SESSION['strength-css'] = $strength_css;
-
+    $_SESSION['strength-css'] = $strength_color;
+    $_SESSION['strength-progress-bar'] = $strength_progress_bar;
 
     $_SESSION['password'] = $password;
 
